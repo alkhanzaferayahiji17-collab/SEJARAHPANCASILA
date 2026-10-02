@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPI Sejarah Lahir Pancasila - MI Kelas 5 Gorontalo</title>
+    
+    <style>
+        :root {
+            --green-dark: #065f46;
+            --green-light: #10b981;
+            --green-bg: #ecfdf5;
+            --gold: #d97706;
+            --gold-light: #fef3c7;
+            --gold-dark: #b45309;
+            --bg-color: #f0fdf4;
+            --text-dark: #1f2937;
+            --text-light: #4b5563;
+            --white: #ffffff;
+            --danger: #ef4444;
+            --danger-bg: #fef2f2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* SPLASH SCREEN STYLES */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #splash-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .splash-logo {
+            width: 90px;
+            height: 90px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border: 4px solid white;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-12px);}
+            60% {transform: translateY(-6px);}
+        }
+        .splash-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+        }
+        .splash-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* MARQUEE / TEKS BERJALAN */
+        .ticker-container {
+            background: var(--gold);
+            color: #ffffff;
+            padding: 8px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--gold-dark);
+        }
+        .ticker-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+        }
+        @keyframes marquee {
+            0%   { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        header {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            color: var(--white);
+            padding: 12px 20px;
+            box-shadow: 0 4px 15px rgba(6, 95, 70, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .brand-icon {
+            background: var(--gold);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .brand h1 {
+            font-size: 1.15rem;
+            color: var(--gold-light);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .brand p {
+            font-size: 0.75rem;
+            color: #d1fae5;
+        }
+
+        nav {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn.active, .nav-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3);
+        }
+
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 25px 15px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 25px rgba(6, 95, 70, 0.08);
+            margin-bottom: 25px;
+            border-top: 6px solid var(--gold);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @media(min-width: 600px) {
+            .card { padding: 35px; }
+        }
+
+        .card-title {
+            color: var(--green-dark);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        @media (min-width: 600px) {
+            .btn { width: auto; }
+        }
+
+        .btn-green { background-color: var(--green-dark); color: var(--white); }
+        .btn-green:hover { background-color: var(--green-light); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(16, 185, 129, 0.35); }
+        
+        .btn-gold { background-color: var(--gold); color: var(--white); }
+        .btn-gold:hover { background-color: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(217, 119, 6, 0.35); }
+        
+        .btn-outline { background-color: transparent; color: var(--green-dark); border: 2px solid var(--green-dark); }
+        .btn-outline:hover { background-color: var(--green-bg); }
+
+        /* COVER MENU UTAMA */
+        .cover-hero {
+            background: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+            border-radius: 14px;
+            padding: 30px;
+            color: white;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+            position: relative;
+        }
+        .cover-hero h2 { font-size: 1.7rem; margin-bottom: 10px; color: var(--gold-light); font-weight: 800; }
+        .cover-hero p { font-size: 1rem; line-height: 1.6; opacity: 0.95; max-width: 650px; margin: 0 auto 15px; }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        @media(min-width: 600px) {
+            .menu-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .menu-card-btn {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .menu-card-btn:hover {
+            border-color: var(--gold);
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+        }
+        .menu-icon {
+            font-size: 2.2rem;
+            background: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .menu-card-btn h3 { color: var(--green-dark); font-size: 1.1rem; margin-bottom: 4px; font-weight: 700; }
+        .menu-card-btn p { font-size: 0.85rem; color: var(--text-light); }
+
+        /* KOTAK INFORMASI / TUJUAN / REFERENSI */
+        .info-box {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .info-box h3 { color: var(--green-dark); margin-bottom: 12px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+        .info-box ul { padding-left: 20px; color: var(--text-dark); }
+        .info-box li { margin-bottom: 8px; font-size: 0.95rem; }
+
+        .dev-profile-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            padding: 25px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .dev-avatar {
+            width: 80px; height: 80px;
+            background: var(--green-dark);
+            color: white;
+            font-size: 2.5rem;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .local-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+            border: 2px solid #fcd34d;
+            border-left: 6px solid var(--gold);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            color: #78350f;
+        }
+        .local-box h4 { color: var(--gold-dark); margin-bottom: 8px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+
+        .timeline-box {
+            background: var(--green-bg);
+            border: 2px solid #a7f3d0;
+            border-radius: 14px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .slide { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .slide.active { display: block; }
+
+        .slide-img-container {
+            width: 100%;
+            height: 180px;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #d1fae5;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .slide-badge {
+            background: var(--gold);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .slide-title { color: var(--green-dark); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+        .slide-desc { font-size: 0.95rem; color: var(--text-dark); line-height: 1.6; }
+
+        .timeline-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #d1fae5;
+        }
+
+        .sim-container {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+        .sim-slider-group {
+            margin: 15px 0;
+        }
+        .sim-slider-group label {
+            display: block;
+            font-weight: 700;
+            color: var(--green-dark);
+            margin-bottom: 5px;
+        }
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--green-dark);
+            height: 8px;
+            border-radius: 4px;
+        }
+        .sim-output {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--green-dark);
+            text-align: center;
+        }
+
+        .question-block {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+        }
+        .question-block:hover { border-color: #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+
+        .q-badge {
+            background: var(--gold);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .q-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .opt-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .opt-label:hover { border-color: var(--green-light); background: var(--green-bg); }
+        
+        input[type="radio"], input[type="checkbox"] {
+            width: 18px; height: 18px; accent-color: var(--green-dark); cursor: pointer;
+        }
+
+        .match-row {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        @media(min-width: 600px) {
+            .match-row { flex-direction: row; justify-content: space-between; align-items: center; }
+        }
+        .match-row select {
+            padding: 10px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            width: 100%;
+        }
+        @media(min-width: 600px) { .match-row select { width: 45%; } }
+        .match-row select:focus { border-color: var(--green-dark); }
+
+        .order-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .order-item {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.2s;
+            user-select: none;
+        }
+        .order-item:hover { border-color: var(--gold); background: var(--gold-light); }
+        .order-item.selected { border-color: var(--green-dark); background: var(--green-bg); }
+        
+        .order-badge-num {
+            width: 32px; height: 32px;
+            background: #e2e8f0; color: var(--text-dark);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; flex-shrink: 0;
+        }
+        .order-item.selected .order-badge-num { background: var(--green-dark); color: white; }
+
+        .feedback-box {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.9rem;
+            animation: fadeIn 0.3s ease;
+        }
+        .feedback-box.correct { display: block; background: #ecfdf5; border-left: 5px solid var(--green-light); color: #065f46; }
+        .feedback-box.incorrect { display: block; background: var(--danger-bg); border-left: 5px solid var(--danger); color: #991b1b; }
+        .feedback-title { font-weight: 800; margin-bottom: 4px; font-size: 1rem; }
+
+        .score-display-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+            border: 3px solid var(--gold);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .score-circle {
+            width: 130px; height: 130px;
+            background: var(--gold);
+            color: white;
+            border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 3rem; font-weight: 800;
+            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.4);
+            border: 4px solid white;
+        }
+
+        .hidden { display: none !important; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer {
+            background: var(--text-dark);
+            color: #d1d5db;
+            text-align: center;
+            padding: 20px 15px;
+            font-size: 0.85rem;
+            margin-top: auto;
+            border-top: 4px solid var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SPLASH SCREEN AWAL -->
+    <div id="splash-screen">
+        <div class="splash-logo">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#ffffff" stroke="#d97706" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="splash-title">MPI Sejarah Kelahiran Pancasila</div>
+        <div class="splash-subtitle">Pendidikan Pancasila • Kelas V Madrasah Ibtidaiyah</div>
+        <button class="btn btn-gold" onclick="dismissSplash()" style="width: auto; padding: 12px 30px; font-size: 1.05rem;">
+            Buka Aplikasi 🚀
+        </button>
+    </div>
+
+    <!-- ANIMASI TEKS BERJALAN / TICKER -->
+    <div class="ticker-container">
+        <div class="ticker-text">
+            🌟 Selamat Datang di Multimedia Pembelajaran Interaktif (MPI) Madrasah Ibtidaiyah • Topik: Sejarah Kelahiran Pancasila • Mari teladani semangat perjuangan para pendiri bangsa dan budaya gotong royong (Huyula) di bumi Gorontalo! 🌟 100% Offline Mandiri • Dikembangkan oleh Ferawati Yahidji, S.Pd.I (MI Muhammadiyah Pone).
+        </div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="brand" onclick="switchTab('home')">
+                <div class="brand-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#ffffff" stroke="#d97706" stroke-width="1.5" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1>MPI Pancasila</h1>
+                    <p>MI Kelas V • Fase C</p>
+                </div>
+            </div>
+            <nav>
+                <button class="nav-btn active" id="btn-tab-home" onclick="switchTab('home')">🏠 Cover</button>
+                <button class="nav-btn" id="btn-tab-materi" onclick="switchTab('materi')">📖 Materi</button>
+                <button class="nav-btn" id="btn-tab-kuis" onclick="switchTab('kuis')">📝 Kuis</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ================= COVER UTAMA & MENU ================= -->
+        <section id="sec-home" class="card">
+            <div class="cover-hero">
+                <h2>Sejarah Kelahiran Pancasila</h2>
+                <p>Media Pembelajaran Interaktif khusus siswa Madrasah Ibtidaiyah Kelas V. Eksplorasi kronologi perumusan dasar negara Indonesia dengan pendekatan audio-visual yang menarik dan kontekstual.</p>
+                <button class="btn btn-gold" onclick="switchTab('materi')" style="font-size: 1.1rem; padding: 14px 30px;">
+                    ▶️ Mulai Belajar Sekarang
+                </button>
+            </div>
+
+            <h3 style="color: var(--green-dark); margin-bottom: 15px; font-size: 1.2rem; text-align: center;">Menu Utama Aplikasi</h3>
+            
+            <div class="menu-grid">
+                <div class="menu-card-btn" onclick="switchTab('materi')">
+                    <div class="menu-icon">📖</div>
+                    <div>
+                        <h3>Mulai Belajar</h3>
+                        <p>Eksplorasi materi sejarah lengkap dengan timeline dan simulasi.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card-btn" onclick="openModal('tujuan')">
+                    <div class="menu-icon">🎯</div>
+                    <div>
+                        <h3>Tujuan Pembelajaran</h3>
+                        <p>Capaian dan target kompetensi yang harus dikuasai.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card-btn" onclick="openModal('dev')">
+                    <div class="menu-icon">👩‍🏫</div>
+                    <div>
+                        <h3>Informasi Pengembang</h3>
+                        <p>Profil pembuat media pembelajaran interaktif.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card-btn" onclick="openModal('ref')">
+                    <div class="menu-icon">📚</div>
+                    <div>
+                        <h3>Referensi</h3>
+                        <p>Sumber referensi materi kurikulum madrasah.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MODAL / SECTION TUJUAN PEMBELAJARAN ================= -->
+        <section id="sec-tujuan" class="card hidden">
+            <h2 class="card-title">Tujuan Pembelajaran</h2>
+            <div class="info-box">
+                <h3>🎯 Target Kompetensi Fase C (Kelas V MI)</h3>
+                <ul>
+                    <li><strong>Memahami Kronologi:</strong> Siswa dapat menjelaskan urutan peristiwa sejarah lahirnya Pancasila mulai dari sidang BPUPK hingga pengesahan PPKI.</li>
+                    <li><strong>Meneladani Semangat Juang:</strong> Siswa mampu menyebutkan tokoh-tokoh penting perumus dasar negara dan mengambil nilai keteladanan persatuan.</li>
+                    <li><strong>Mengaitkan Kontekstual Lokal:</strong> Siswa dapat menghubungkan semangat gotong royong <em>Huyula</em> di Gorontalo dengan nilai persatuan dalam perumusan Pancasila.</li>
+                    <li><strong>Evaluasi Kritis:</strong> Siswa dapat menyelesaikan soal kuis formatif bervariatif dengan tingkat ketepatan minimal 75%.</li>
+                </ul>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-outline" onclick="switchTab('home')">⬅️ Kembali ke Cover</button>
+            </div>
+        </section>
+
+        <!-- ================= MODAL / SECTION INFORMASI PENGEMBANG ================= -->
+        <section id="sec-dev" class="card hidden">
+            <h2 class="card-title">Informasi Pengembang</h2>
+            <div class="dev-profile-card">
+                <div class="dev-avatar">👩‍🏫</div>
+                <h3 style="color: var(--green-dark); font-size: 1.3rem; margin-bottom: 5px;">Ferawati Yahidji, S.Pd.I</h3>
+                <p style="color: var(--gold-dark); font-weight: 700; margin-bottom: 12px;">Instansi: MI Muhammadiyah Pone</p>
+                <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.6;">
+                    Guru madrasah berdedikasi di lingkungan Kantor Wilayah Kementerian Agama Provinsi Gorontalo. Aktif mengembangkan media pembelajaran digital interaktif yang ramah offline untuk siswa madrasah di daerah persawahan.
+                </p>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-outline" onclick="switchTab('home')">⬅️ Kembali ke Cover</button>
+            </div>
+        </section>
+
+        <!-- ================= MODAL / SECTION REFERENSI ================= -->
+        <section id="sec-ref" class="card hidden">
+            <h2 class="card-title">Referensi Pustaka</h2>
+            <div class="info-box">
+                <h3>📚 Sumber Pustaka & Kurikulum</h3>
+                <ul>
+                    <li>Kementerian Agama Republik Indonesia. <em>Kurikulum Merdeka Madrasah Ibtidaiyah Mata Pelajaran Pendidikan Pancasila</em>.</li>
+                    <li>Buku Siswa Pendidikan Pancasila Kelas V Madrasah Ibtidaiyah.</li>
+                    <li>Arsip Sejarah Nasional Indonesia: Dokumen Sidang BPUPK dan PPKI 1945.</li>
+                    <li>Kearifan Lokal Budaya Gorontalo: Nilai-Nilai Sosial Gotong Royong (Huyula) Masyarakat Tani.</li>
+                </ul>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-outline" onclick="switchTab('home')">⬅️ Kembali ke Cover</button>
+            </div>
+        </section>
+
+        <!-- ================= MATERI & SIMULASI (TIMELINE INTERAKTIF) ================= -->
+        <section id="sec-materi" class="card hidden">
+            <h2 class="card-title">Eksplorasi Sejarah Kelahiran Pancasila</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 20px;">Gunakan tombol navigasi di bawah untuk menelusuri kronologi sejarah secara runtut.</p>
+
+            <div class="local-box">
+                <h4>🌾 Kontekstual Budaya Lokal Gorontalo</h4>
+                <p>Di hamparan sawah subur Gorontalo, para petani bahu-membahu dalam tradisi <strong>Huyula</strong> (gotong royong). Semangat <em>Huyula</em> ini mencerminkan jiwa persatuan para pahlawan saat merumuskan dasar negara Pancasila!</p>
+            </div>
+
+            <div class="timeline-box">
+                
+                <!-- Slide 1: BPUPKI -->
+                <div class="slide active" id="slide-1">
+                    <span class="slide-badge">1 Maret 1945</span>
+                    <h3 class="slide-title">Pembentukan BPUPKI</h3>
+                    <div class="slide-img-container">
+                        <svg viewBox="0 0 300 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="160" fill="#f0fdf4"/>
+                            <rect x="50" y="50" width="200" height="90" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+                            <path d="M40 50L150 20L260 50H40Z" fill="#b45309"/>
+                            <rect x="135" y="100" width="30" height="40" fill="#065f46"/>
+                            <rect x="70" y="70" width="30" height="30" fill="#ffffff" stroke="#64748b"/>
+                            <rect x="200" y="70" width="30" height="30" fill="#ffffff" stroke="#64748b"/>
+                            <text x="150" y="42" fill="white" font-size="10" font-weight="bold" text-anchor="middle">GEDUNG BPUPKI</text>
+                        </svg>
+                    </div>
+                    <p class="slide-desc">Pemerintah Pendudukan Jepang membentuk Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan Indonesia (BPUPKI) yang diketuai oleh Dr. K.R.T. Radjiman Wedyodiningrat untuk mempersiapkan kemerdekaan Indonesia.</p>
+                </div>
+
+                <!-- Slide 2: Sidang Pertama -->
+                <div class="slide" id="slide-2">
+                    <span class="slide-badge">29 Mei - 1 Juni 1945</span>
+                    <h3 class="slide-title">Sidang Pertama BPUPKI & Usulan Dasar Negara</h3>
+                    <div class="slide-img-container">
+                        <svg viewBox="0 0 300 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="160" fill="#fef3c7"/>
+                            <rect x="110" y="90" width="80" height="50" rx="4" fill="#d97706"/>
+                            <circle cx="150" cy="70" r="16" fill="#b45309"/>
+                            <path d="M125 120C125 105 135 100 150 100C165 100 175 105 175 120V140H125V120Z" fill="#b45309"/>
+                            <text x="150" y="25" fill="#78350f" font-size="12" font-weight="bold" text-anchor="middle">Sidang Membahas Dasar Negara</text>
+                            <text x="150" y="150" fill="#78350f" font-size="10" text-anchor="middle">Disampaikan Moh. Yamin, Mr. Soepomo, & Ir. Soekarno</text>
+                        </svg>
+                    </div>
+                    <p class="slide-desc">Sidang pertama BPUPKI khusus membahas rumusan dasar negara. Tiga tokoh bangsa secara bergantian mengusulkan gagasan pandangan hidup bangsa Indonesia yang merdeka.</p>
+                </div>
+
+                <!-- Slide 3: 1 Juni - Lahir Pancasila -->
+                <div class="slide" id="slide-3">
+                    <span class="slide-badge">1 Juni 1945</span>
+                    <h3 class="slide-title">Lahirnya Istilah "Pancasila"</h3>
+                    <div class="slide-img-container">
+                        <svg viewBox="0 0 300 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="160" fill="#ecfdf5"/>
+                            <circle cx="150" cy="70" r="35" fill="#f59e0b"/>
+                            <path d="M150 45L158 63H178L162 75L168 95L150 83L132 95L138 75L122 63H142L150 45Z" fill="#ffffff"/>
+                            <text x="150" y="130" fill="#065f46" font-size="13" font-weight="bold" text-anchor="middle">Usulan Ir. Soekarno Dinamai "Pancasila"</text>
+                        </svg>
+                    </div>
+                    <p class="slide-desc">Ir. Soekarno menyampaikan pidato penting berisi lima prinsip dasar negara. Atas saran seorang ahli bahasa, rumusan tersebut diberi nama <strong>Pancasila</strong> (Panca = Lima, Sila = Dasar atau Sendi).</p>
+                </div>
+
+                <!-- Slide 4: Panitia Sembilan & Piagam Jakarta -->
+                <div class="slide" id="slide-4">
+                    <span class="slide-badge">22 Juni 1945</span>
+                    <h3 class="slide-title">Panitia Sembilan & Piagam Jakarta</h3>
+                    <div class="slide-img-container">
+                        <svg viewBox="0 0 300 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="160" fill="#f0fdf4"/>
+                            <rect x="90" y="25" width="120" height="110" rx="4" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+                            <line x1="110" y1="45" x2="190" y2="45" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+                            <line x1="110" y1="65" x2="180" y2="65" stroke="#94a3b8" stroke-width="2"/>
+                            <line x1="110" y1="80" x2="170" y2="80" stroke="#94a3b8" stroke-width="2"/>
+                            <line x1="110" y1="95" x2="185" y2="95" stroke="#94a3b8" stroke-width="2"/>
+                            <text x="150" y="125" fill="#d97706" font-size="10" font-weight="bold" text-anchor="middle">PIAGAM JAKARTA</text>
+                        </svg>
+                    </div>
+                    <p class="slide-desc">Untuk menjembatani perbedaan pendapat, dibentuklah Panitia Sembilan yang berhasil menyusun dokumen bersejarah bernama <strong>Piagam Jakarta</strong> (Jakarta Charter).</p>
+                </div>
+
+                <!-- Slide 5: Pengesahan PPKI -->
+                <div class="slide" id="slide-5">
+                    <span class="slide-badge">18 Agustus 1945</span>
+                    <h3 class="slide-title">Pengesahan Pancasila oleh PPKI</h3>
+                    <div class="slide-img-container">
+                        <svg viewBox="0 0 300 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="160" fill="#fef2f2"/>
+                            <rect x="70" y="35" width="160" height="90" rx="8" fill="#ffffff" stroke="#ef4444" stroke-width="2"/>
+                            <rect x="90" y="55" width="120" height="25" fill="#dc2626"/>
+                            <rect x="90" y="80" width="120" height="25" fill="#ffffff" stroke="#cbd5e1"/>
+                            <text x="150" y="142" fill="#991b1b" font-size="11" font-weight="bold" text-anchor="middle">Sah Menjadi Dasar Negara Republik Indonesia</text>
+                        </svg>
+                    </div>
+                    <p class="slide-desc">Sehari setelah Proklamasi, Panitia Persiapan Kemerdekaan Indonesia (PPKI) mengesahkan Undang-Undang Dasar 1945 di mana Pembukaannya memuat rumusan resmi Pancasila yang sah.</p>
+                </div>
+
+                <div class="timeline-nav">
+                    <button class="btn btn-outline" onclick="prevSlide()" id="btn-prev" style="width: auto; padding: 8px 16px;">⬅️ Sebelumnya</button>
+                    <span id="slide-counter" style="font-weight: 700; color: var(--green-dark);">1 dari 5</span>
+                    <button class="btn btn-green" onclick="nextSlide()" id="btn-next" style="width: auto; padding: 8px 16px;">Selanjutnya ➡️</button>
+                </div>
+            </div>
+
+            <!-- SIMULASI / MANIPULASI VARIABEL INTERAKTIF -->
+            <div class="sim-container">
+                <h3 style="color: var(--green-dark); margin-bottom: 8px; font-size: 1.1rem;">🧪 Simulasi Interaktif: Semangat "Huyula" (Gotong Royong)</h3>
+                <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 15px;">Atur tingkat kerja sama (Huyula) dan musyawarah para pahlawan untuk melihat seberapa kokoh negara Indonesia terbangun!</p>
+                
+                <div class="sim-slider-group">
+                    <label for="slider-kerjasama">Tingkat Gotong Royong / Huyula: <span id="val-kerjasama">80</span>%</label>
+                    <input type="range" id="slider-kerjasama" min="10" max="100" value="80" oninput="updateSimulasi()">
+                </div>
+
+                <div class="sim-output" id="sim-result">
+                    KOKOH & BERSATU: Semangat persatuan yang tinggi berhasil merumuskan Pancasila dengan damai!
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 25px;">
+                <button class="btn btn-gold" onclick="switchTab('kuis')" style="font-size: 1.05rem; padding: 12px 25px;">
+                    Lanjut ke Evaluasi Kuis 📝
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= EVALUASI KUIS BERSERAK / BERVARIATIF ================= -->
+        <section id="sec-kuis" class="card hidden">
+            <h2 class="card-title">Evaluasi Kuis Format Bervariatif</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 25px;">Jawablah 5 soal latihan dengan berbagai model tipe soal di bawah ini dengan teliti!</p>
+
+            <form id="quiz-form">
+                
+                <!-- SOAL 1: Pilihan Ganda Biasa -->
+                <div class="question-block">
+                    <span class="q-badge">Tipe 1: Pilihan Ganda</span>
+                    <div class="q-text">1. Sidang pertama BPUPKI yang secara khusus membahas perumusan dasar negara Indonesia merdeka dilaksanakan pada tanggal...</div>
+                    <label class="opt-label"><input type="radio" name="q1" value="A"> A. 17 Agustus 1945</label>
+                    <label class="opt-label"><input type="radio" name="q1" value="B"> B. 29 Mei - 1 Juni 1945</label>
+                    <label class="opt-label"><input type="radio" name="q1" value="C"> C. 22 Juni 1945</label>
+                    <label class="opt-label"><input type="radio" name="q1" value="D"> D. 18 Agustus 1945</label>
+                    <div id="fb-q1" class="feedback-box"></div>
+                </div>
+
+                <!-- SOAL 2: Benar / Salah -->
+                <div class="question-block">
+                    <span class="q-badge">Tipe 2: Benar atau Salah</span>
+                    <div class="q-text">2. Istilah "Pancasila" pertama kali diusulkan oleh Ir. Soekarno dalam pidatonya pada tanggal 1 Juni 1945.</div>
+                    <label class="opt-label"><input type="radio" name="q2" value="Benar"> Pernyataan ini BENAR</label>
+                    <label class="opt-label"><input type="radio" name="q2" value="Salah"> Pernyataan ini SALAH</label>
+                    <div id="fb-q2" class="feedback-box"></div>
+                </div>
+
+                <!-- SOAL 3: Pilihan Ganda Kompleks (Checkbox) -->
+                <div class="question-block">
+                    <span class="q-badge">Tipe 3: Pilihan Ganda Kompleks (Pilih 3 Tokoh)</span>
+                    <div class="q-text">3. Siapakah <strong>tiga tokoh</strong> utama yang menyampaikan usulan dasar negara pada sidang pertama BPUPKI? (Pilih 3 jawaban yang benar!)</div>
+                    <label class="opt-label"><input type="checkbox" name="q3" value="Soekarno"> Ir. Soekarno</label>
+                    <label class="opt-label"><input type="checkbox" name="q3" value="Hatta"> Drs. Moh. Hatta</label>
+                    <label class="opt-label"><input type="checkbox" name="q3" value="Soepomo"> Mr. Soepomo</label>
+                    <label class="opt-label"><input type="checkbox" name="q3" value="Yamin"> Moh. Yamin</label>
+                    <label class="opt-label"><input type="checkbox" name="q3" value="Radjiman"> Dr. K.R.T. Radjiman Wedyodiningrat</label>
+                    <div id="fb-q3" class="feedback-box"></div>
+                </div>
+
+                <!-- SOAL 4: Menjodohkan Berbasis Dropdown -->
+                <div class="question-block">
+                    <span class="q-badge">Tipe 4: Menjodohkan Peristiwa & Tanggal</span>
+                    <div class="q-text">4. Jodohkan peristiwa bersejarah berikut dengan tanggal pelaksanaan yang tepat!</div>
+                    
+                    <div class="match-row">
+                        <div><strong>Perumusan Piagam Jakarta</strong> oleh Panitia Sembilan</div>
+                        <select name="q4_a">
+                            <option value="">-- Pilih Tanggal --</option>
+                            <option value="1Maret">1 Maret 1945</option>
+                            <option value="22Juni">22 Juni 1945</option>
+                            <option value="18Agustus">18 Agustus 1945</option>
+                        </select>
+                    </div>
+
+                    <div class="match-row">
+                        <div><strong>Pengesahan UUD 1945 & Pancasila</strong> oleh PPKI</div>
+                        <select name="q4_b">
+                            <option value="">-- Pilih Tanggal --</option>
+                            <option value="1Maret">1 Maret 1945</option>
+                            <option value="22Juni">22 Juni 1945</option>
+                            <option value="18Agustus">18 Agustus 1945</option>
+                        </select>
+                    </div>
+                    <div id="fb-q4" class="feedback-box"></div>
+                </div>
+
+                <!-- SOAL 5: Mengurutkan Kronologi -->
+                <div class="question-block">
+                    <span class="q-badge">Tipe 5: Mengurutkan Kronologi Peristiwa</span>
+                    <div class="q-text">5. Klik kotak peristiwa di bawah ini secara berurutan mulai dari yang <strong>paling awal terjadi (1)</strong> hingga yang <strong>paling akhir (4)</strong>!</div>
+                    
+                    <div class="order-container">
+                        <div class="order-item" onclick="handleOrderClick(this, 'ppki')">
+                            <div class="order-badge-num">?</div>
+                            <div>Pengesahan Pancasila sebagai Dasar Negara oleh PPKI</div>
+                        </div>
+                        <div class="order-item" onclick="handleOrderClick(this, 'bpupki')">
+                            <div class="order-badge-num">?</div>
+                            <div>Pembentukan BPUPKI oleh pemerintah pendudukan Jepang</div>
+                        </div>
+                        <div class="order-item" onclick="handleOrderClick(this, 'istilah')">
+                            <div class="order-badge-num">?</div>
+                            <div>Penyampaian usulan nama "Pancasila" oleh Ir. Soekarno</div>
+                        </div>
+                        <div class="order-item" onclick="handleOrderClick(this, 'piagam')">
+                            <div class="order-badge-num">?</div>
+                            <div>Perumusan Piagam Jakarta oleh Panitia Sembilan</div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.85rem;" onclick="resetOrderSelection()">🔄 Reset Urutan</button>
+                    <div id="fb-q5" class="feedback-box"></div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="button" class="btn btn-green" style="padding: 14px 30px; font-size: 1.1rem;" onclick="submitQuiz()" id="btn-submit-quiz">
+                        Selesai & Periksa Jawaban ✔️
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- ================= HASIL EVALUASI ================= -->
+        <section id="sec-hasil" class="card hidden">
+            <h2 class="card-title">Hasil Evaluasi Kuis</h2>
+            
+            <div class="score-display-card">
+                <div class="score-circle" id="final-score-val">0</div>
+                <h3 id="score-title-msg" style="color: var(--green-dark); margin-bottom: 8px; font-size: 1.3rem;">Luar Biasa!</h3>
+                <p id="score-desc-msg" style="color: var(--text-light); font-size: 0.95rem;">Periksa kembali ulasan dan pembahasan edukatif di atas.</p>
+            </div>
+
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-outline" onclick="resetQuiz()">🔄 Ulangi Kuis</button>
+                <button class="btn btn-gold" onclick="switchTab('materi')">📖 Pelajari Materi Lagi</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Multimedia Pembelajaran Interaktif (MPI) • MI Muhammadiyah Pone, Gorontalo • 100% Offline Mandiri 🚀
+    </footer>
+
+    <script>
+        function dismissSplash() {
+            const splash = document.getElementById('splash-screen');
+            splash.classList.add('fade-out');
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 600);
+        }
+
+        function switchTab(tabId) {
+            document.getElementById('sec-home').classList.add('hidden');
+            document.getElementById('sec-tujuan').classList.add('hidden');
+            document.getElementById('sec-dev').classList.add('hidden');
+            document.getElementById('sec-ref').classList.add('hidden');
+            document.getElementById('sec-materi').classList.add('hidden');
+            document.getElementById('sec-kuis').classList.add('hidden');
+            document.getElementById('sec-hasil').classList.add('hidden');
+
+            document.getElementById('btn-tab-home').classList.remove('active');
+            document.getElementById('btn-tab-materi').classList.remove('active');
+            document.getElementById('btn-tab-kuis').classList.remove('active');
+
+            if (tabId === 'home') {
+                document.getElementById('sec-home').classList.remove('hidden');
+                document.getElementById('btn-tab-home').classList.add('active');
+            } else if (tabId === 'materi') {
+                document.getElementById('sec-materi').classList.remove('hidden');
+                document.getElementById('btn-tab-materi').classList.add('active');
+            } else if (tabId === 'kuis') {
+                document.getElementById('sec-kuis').classList.remove('hidden');
+                document.getElementById('btn-tab-kuis').classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openModal(modalName) {
+            document.getElementById('sec-home').classList.add('hidden');
+            document.getElementById('sec-tujuan').classList.add('hidden');
+            document.getElementById('sec-dev').classList.add('hidden');
+            document.getElementById('sec-ref').classList.add('hidden');
+
+            if (modalName === 'tujuan') {
+                document.getElementById('sec-tujuan').classList.remove('hidden');
+            } else if (modalName === 'dev') {
+                document.getElementById('sec-dev').classList.remove('hidden');
+            } else if (modalName === 'ref') {
+                document.getElementById('sec-ref').classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        let currentSlide = 1;
+        const totalSlides = 5;
+
+        function updateSlideDisplay() {
+            for (let i = 1; i <= totalSlides; i++) {
+                document.getElementById('slide-' + i).classList.remove('active');
+            }
+            document.getElementById('slide-' + currentSlide).classList.add('active');
+            document.getElementById('slide-counter').innerText = currentSlide + ' dari ' + totalSlides;
+
+            document.getElementById('btn-prev').style.visibility = (currentSlide === 1) ? 'hidden' : 'visible';
+            document.getElementById('btn-next').style.visibility = (currentSlide === totalSlides) ? 'hidden' : 'visible';
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideDisplay();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideDisplay();
+            }
+        }
+
+        function updateSimulasi() {
+            const val = document.getElementById('slider-kerjasama').value;
+            document.getElementById('val-kerjasama').innerText = val;
+            const resEl = document.getElementById('sim-result');
+
+            if (val >= 75) {
+                resEl.style.color = 'var(--green-dark)';
+                resEl.innerHTML = `🌟 KOKOH & BERSATU (${val}%): Semangat gotong royong (Huyula) yang sangat tinggi melahirkan kesepakatan nasional yang kuat tanpa perpecahan!`;
+            } else if (val >= 40) {
+                resEl.style.color = 'var(--gold-dark)';
+                resEl.innerHTML = `⚠️ CUKUP BAIK (${val}%): Diskusi berjalan cukup baik, namun masih ada ego kelompok yang perlu disatukan melalui musyawarah.`;
+            } else {
+                resEl.style.color = 'var(--danger)';
+                resEl.innerHTML = `❌ KURANG SELARAS (${val}%): Kurangnya kerja sama dan musyawarah membuat perumusan dasar negara menjadi terhambat dan rapuh.`;
+            }
+        }
+
+        let userOrder = [];
+        function handleOrderClick(element, idKey) {
+            if (userOrder.includes(idKey)) return;
+            userOrder.push(idKey);
+            const rank = userOrder.length;
+            element.classList.add('selected');
+            element.querySelector('.order-badge-num').innerText = rank;
+        }
+
+        function resetOrderSelection() {
+            userOrder = [];
+            const items = document.querySelectorAll('.order-item');
+            items.forEach(item => {
+                item.classList.remove('selected');
+                item.querySelector('.order-badge-num').innerText = '?';
+            });
+        }
+
+        function showFeedback(elementId, isCorrect, titleText, explanationText) {
+            const fb = document.getElementById(elementId);
+            fb.className = 'feedback-box ' + (isCorrect ? 'correct' : 'incorrect');
+            fb.innerHTML = `<div class="feedback-title">${isCorrect ? '✅ Benar!' : '❌ Kurang Tepat'} - ${titleText}</div><div>${explanationText}</div>`;
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            const form = document.getElementById('quiz-form');
+
+            const q1Val = form.q1.value;
+            if (q1Val === 'B') {
+                score += 20;
+                showFeedback('fb-q1', true, 'Sidang BPUPKI I', 'Sidang pertama BPUPKI dilaksanakan pada 29 Mei - 1 Juni 1945 untuk membahas rancangan dasar negara.');
+            } else {
+                showFeedback('fb-q1', false, 'Sidang BPUPKI I', 'Jawaban yang benar adalah B (29 Mei - 1 Juni 1945).');
+            }
+
+            const q2Val = form.q2.value;
+            if (q2Val === 'Benar') {
+                score += 20;
+                showFeedback('fb-q2', true, 'Pidato Bung Karno', 'Benar sekali, istilah "Pancasila" pertama kali diperkenalkan oleh Ir. Soekarno pada 1 Juni 1945.');
+            } else {
+                showFeedback('fb-q2', false, 'Pidato Bung Karno', 'Pernyataan tersebut BENAR. Ir. Soekarno mengusulkan nama Pancasila pada 1 Juni 1945.');
+            }
+
+            const q3Checked = Array.from(form.querySelectorAll('input[name="q3"]:checked')).map(cb => cb.value);
+            const correctQ3 = ['Soekarno', 'Soepomo', 'Yamin'];
+            const isQ3Correct = q3Checked.length === 3 && correctQ3.every(val => q3Checked.includes(val));
+            if (isQ3Correct) {
+                score += 20;
+                showFeedback('fb-q3', true, 'Tiga Tokoh Utama', 'Tepat! Tiga tokoh yang menyampaikan usulan dasar negara pada sidang pertama BPUPKI adalah Moh. Yamin, Mr. Soepomo, dan Ir. Soekarno.');
+            } else {
+                showFeedback('fb-q3', false, 'Tiga Tokoh Utama', 'Jawaban yang benar adalah Ir. Soekarno, Mr. Soepomo, dan Moh. Yamin.');
+            }
+
+            const q4a = form.q4_a.value;
+            const q4b = form.q4_b.value;
+            if (q4a === '22Juni' && q4b === '18Agustus') {
+                score += 20;
+                showFeedback('fb-q4', true, 'Peristiwa & Tanggal', 'Tepat! Piagam Jakarta dirumuskan 22 Juni 1945, dan pengesahan Pancasila oleh PPKI pada 18 Agustus 1945.');
+            } else {
+                showFeedback('fb-q4', false, 'Peristiwa & Tanggal', 'Pasangan yang benar: Piagam Jakarta (22 Juni 1945) dan Pengesahan PPKI (18 Agustus 1945).');
+            }
+
+            const correctOrder = ['bpupki', 'istilah', 'piagam', 'ppki'];
+            let isQ5Correct = userOrder.length === 4 && userOrder.every((val, idx) => val === correctOrder[idx]);
+            if (isQ5Correct) {
+                score += 20;
+                showFeedback('fb-q5', true, 'Kronologi Sejarah', 'Luar biasa! Urutan sudah runtut: Pembentukan BPUPKI ➡️ Lahir Istilah Pancasila ➡️️ Piagam Jakarta ➡️ Pengesahan PPKI.');
+            } else {
+                showFeedback('fb-q5', false, 'Kronologi Sejarah', 'Urutan yang benar: (1) BPUPKI dibentuk, (2) Istilah Pancasila lahir, (3) Piagam Jakarta dirumuskan, (4) Pengesahan oleh PPKI.');
+            }
+
+            document.getElementById('sec-kuis').classList.add('hidden');
+            document.getElementById('sec-hasil').classList.remove('hidden');
+            document.getElementById('final-score-val').innerText = score;
+
+            const titleMsg = document.getElementById('score-title-msg');
+            const descMsg = document.getElementById('score-desc-msg');
+
+            if (score === 100) {
+                titleMsg.innerText = 'Alhamdulillah, Sempurna! 🎉';
+                descMsg.innerText = 'Kamu menguasai materi Sejarah Kelahiran Pancasila dengan sangat baik!';
+            } else if (score >= 60) {
+                titleMsg.innerText = 'Bagus Sekali! 👍';
+                descMsg.innerText = 'Kamu sudah memahami sebagian besar materi sejarah dengan baik.';
+            } else {
+                titleMsg.innerText = 'Tetap Semangat Belajar! 💪';
+                descMsg.innerText = 'Yuk, baca kembali ringkasan materi dan coba ulangi kuisnya!';
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            document.getElementById('sec-hasil').classList.add('hidden');
+            document.getElementById('sec-kuis').classList.remove('hidden');
+            document.getElementById('quiz-form').reset();
+            resetOrderSelection();
+
+            const fbs = document.querySelectorAll('.feedback-box');
+            fbs.forEach(fb => {
+                fb.className = 'feedback-box';
+                fb.innerHTML = '';
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+```
+eof
+
+Saya telah berhasil memperbarui aplikasi Multimedia Pembelajaran Interaktif (MPI) Anda dengan menambahkan Splash Screen, menu cover utama lengkap dengan tombol Tujuan Pembelajaran, Informasi Pengembang (**Ferawati Yahidji, S.Pd.I** dari **MI Muhammadiyah Pone**), Referensi, serta animasi teks berjalan (marquee) yang informatif. Anda dapat menyimpan kode di atas sebagai file `.html` dan menjalankannya secara offline di browser perangkat apa pun.
